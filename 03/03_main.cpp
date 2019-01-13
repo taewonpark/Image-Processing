@@ -73,7 +73,7 @@ int main() {
 	*/
 	
 	
-	
+	/*
 	//LoG
 	float *mask1 = new float[k_size * k_size];
 	float *mask2 = new float[k_size * k_size];
@@ -86,7 +86,8 @@ int main() {
 	Get_laplacian(mask2, mask3, k_size);
 	imshow("a", Convolution_F(gauss, mask2, gray.rows, gray.cols)); waitKey();
 	imshow("b", Convolution_F(gauss, mask3, gray.rows, gray.cols)); waitKey();
-	
+	*/
+
 
 	/*
 	//DoG
