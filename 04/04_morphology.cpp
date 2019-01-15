@@ -386,6 +386,7 @@ Mat Bispline_interpolation(Mat img, int k) {
 
 Mat Bispline_interpolation_x_next_y(Mat img, int k) {
 	Mat result(k*img.rows, k*img.cols, CV_8UC1, Scalar(0, 0, 0));
+	Mat temp_result(k*img.rows, k*img.cols, CV_8UC1, Scalar(0, 0, 0));
 	double *left_two = new double[k + 2], *left_one = new double[k + 2];
 	double *right_two = new double[k + 2], *right_one = new double[k + 2];
 	double x, interval = (double)1 / (k + 1);
@@ -411,15 +412,16 @@ Mat Bispline_interpolation_x_next_y(Mat img, int k) {
 				if (temp > 255) temp = 255;
 				else if (temp < 0) temp = 0;
 				result.at<uchar>(i*temp_k, j*temp_k + m) = temp;
+				temp_result.at<uchar>(i*temp_k, j*temp_k + m) = temp;
 			}
 		}
 	//calculate y-axis pixel value
 	for (int i = 0; i < img.rows - 1; i++)
 		for (int j = 0; j < result.cols; j++) {
-			(i == 0) ? val1 = 0 : val1 = result.at<uchar>((i - 1)*temp_k, j);
-			val2 = result.at<uchar>(i*temp_k, j);
-			val3 = result.at<uchar>((i + 1)*temp_k, j);
-			(i == img.rows - 2) ? val4 = 0 : val4 = result.at<uchar>((i + 2)*temp_k, j);
+			(i == 0) ? val1 = 0 : val1 = temp_result.at<uchar>((i - 1)*temp_k, j);
+			val2 = temp_result.at<uchar>(i*temp_k, j);
+			val3 = temp_result.at<uchar>((i + 1)*temp_k, j);
+			(i == img.rows - 2) ? val4 = 0 : val4 = temp_result.at<uchar>((i + 2)*temp_k, j);
 			for (int m = 0; m < temp_k+1; m++) {
 				temp = (int)(val1*left_two[m] + val2*left_one[m] + val3*right_one[m] + val4*right_two[m]);
 				if (temp > 255) temp = 255;
