@@ -17,3 +17,17 @@ cv::Mat Dilation_gray(cv::Mat img, int *mask, int mask_size);
 cv::Mat Erosion_gray(cv::Mat img, int *mask, int mask_size);
 cv::Mat Opening_gray(cv::Mat img, int *mask, int mask_size);
 cv::Mat Closing_gray(cv::Mat img, int *mask, int mask_size);
+
+cv::Mat Forward_mapping(cv::Mat img, int k);
+cv::Mat Nearest_interpolation(cv::Mat img, int k);
+cv::Mat Bilinear_interpolation(cv::Mat img, int k);
+double Bicubic_weight(double x, double a);
+cv::Mat Bicubic_interpolation(cv::Mat img, int k, double a);
+cv::Mat Bicubic_interpolation_x_next_y(cv::Mat img, int k, double a);
+double Bspline_weight(double x);
+cv::Mat Bispline_interpolation(cv::Mat img, int k);
+cv::Mat Bispline_interpolation_x_next_y(cv::Mat img, int k);
+
+cv::Mat Rotation(cv::Mat img, double theta);
+cv::Mat Rotation_with_cut(cv::Mat img, double theta);
+cv::Mat Rotation_with_interpolation(cv::Mat img, double theta);

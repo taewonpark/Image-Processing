@@ -9,6 +9,8 @@ using namespace std;
 
 int main() {
 	string imageName("C:\\Users\\samsung\\Desktop\\BEP\\BEP1\\lena.jpg");
+	//string imageName("C:\\Users\\samsung\\Desktop\\BEP\\BEP5\\small.bmp");
+	//string imageName("C:\\Users\\samsung\\Desktop\\BEP\\BEP5\\Rotation.jpg");
 	Mat img = imread(imageName.c_str(), IMREAD_COLOR), gray, histogram;
 	cvtColor(img, gray, COLOR_RGB2GRAY);
 
@@ -54,7 +56,7 @@ int main() {
 	*/
 
 
-	
+	/*
 	//Grayscale
 	//int mask[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 	int mask[] = { -10, 1, 2, 10, -3, -7, -2, 9, 1 };
@@ -66,6 +68,39 @@ int main() {
 	imshow("Erosion_gray", Erosion_gray(gray, mask, mask_size)); waitKey();
 	imshow("Opening_gray", Opening_gray(gray, mask, mask_size)); waitKey();
 	imshow("Closing_gray", Closing_gray(gray, mask, mask_size)); waitKey();
+	*/
+
+
+	/*
+	//Interpolation
+	Mat cv_nearest, cv_linear, cv_cubic;
+	resize(gray, cv_nearest, cv_nearest.size(), 10, 10, INTER_NEAREST);
+	resize(gray, cv_linear, cv_linear.size(), 10, 10, INTER_LINEAR);
+	resize(gray, cv_cubic, cv_cubic.size(), 10, 10, INTER_CUBIC);
+
+	imshow("Original", gray); waitKey();
+
+	imshow("cv nearest", cv_nearest); waitKey();
+	imshow("Nearest interpolation", Nearest_interpolation(gray, 10)); waitKey();
+
+	imshow("cv linear", cv_linear); waitKey();
+	imshow("Bilinear interpolation", Bilinear_interpolation(gray, 10)); waitKey();
+
+	imshow("cv cubic", cv_cubic); waitKey();
+	imshow("Bicubic interpolation", Bicubic_interpolation(gray, 10, -0.75)); waitKey();
+	imshow("Bicubic interpolation x next y", Bicubic_interpolation_x_next_y(gray, 10, -0.75)); waitKey();
+
+	imshow("Bispline interpolation", Bispline_interpolation(gray, 10)); waitKey();
+	imshow("Bispline interpolation x next y", Bispline_interpolation_x_next_y(gray, 30)); waitKey();
+	*/
+
+
+	/*
+	//Rotation
+	imshow("Rotation", Rotation_with_interpolation(gray, PI / 4)); waitKey();
+	imshow("Rotation with cut", Rotation_with_cut(gray, PI / 4)); waitKey();
+	imshow("Rotation with interpolation", Rotation_with_interpolation(gray, PI / 4)); waitKey();
+	*/
 	
 	return 0;
 }
