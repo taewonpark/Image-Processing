@@ -389,7 +389,7 @@ void Get_gaussian(float *mask, int size, float stddev) {
 	int x, y;
 
 	for (int i = 0; i < size; i++)
-		for (int j = 0; j < size + 1; j++) {
+		for (int j = 0; j < size; j++) {
 			x = j - half; y = i - half;
 			mask[size*i + j] = exp(-(x*x + y*y) / (2 * variance)) / sqrt(2 * PI*variance);
 			summation += mask[size*i + j];
