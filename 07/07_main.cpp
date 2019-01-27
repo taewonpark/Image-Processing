@@ -1,9 +1,6 @@
 #include <opencv2\opencv.hpp>
 #include <iostream>
 #include <cmath>
-#include "03.h"
-#include "04.h"
-#include "07.h"
 
 using namespace cv;
 using namespace std;

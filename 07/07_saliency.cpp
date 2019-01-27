@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
-#include "02.h"
-#include "03.h"
-#include "04.h"
-#include "07.h"
+#include "..\\02.h"
+#include "..\\03.h"
+#include "..\\04.h"
+#include "..\\07.h"
 
 using namespace cv;
 using namespace std;
